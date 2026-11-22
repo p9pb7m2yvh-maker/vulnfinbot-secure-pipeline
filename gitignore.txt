@@ -1,0 +1,13 @@
+# виртуальное окружение
+venv/
+.venv/
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+# секреты
+.env
+*.key
+# отчёты создаёт pipeline, в git их не кладём
+reports/*
+!reports/.gitkeep

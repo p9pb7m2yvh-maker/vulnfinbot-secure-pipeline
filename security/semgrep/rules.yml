@@ -1,0 +1,36 @@
+rules:
+  - id: python-eval-usage
+    languages: [python]
+    severity: ERROR
+    message: Использование eval() опасно, можно выполнить произвольный код.
+    pattern: eval(...)
+
+  - id: python-exec-usage
+    languages: [python]
+    severity: ERROR
+    message: Использование exec() опасно.
+    pattern: exec(...)
+
+  - id: python-os-system
+    languages: [python]
+    severity: ERROR
+    message: os.system() может привести к command injection.
+    pattern: os.system(...)
+
+  - id: python-subprocess-shell-true
+    languages: [python]
+    severity: ERROR
+    message: subprocess с shell=True опасен.
+    pattern: subprocess.$FUNC(..., shell=True, ...)
+
+  - id: flask-debug-true
+    languages: [python]
+    severity: WARNING
+    message: Нельзя запускать Flask с debug=True.
+    pattern: $APP.run(..., debug=True, ...)
+
+  - id: python-hardcoded-password
+    languages: [python]
+    severity: WARNING
+    message: Похоже на пароль в коде.
+    pattern-regex: (?i)(password|passwd|secret|api_key)\s*=\s*["'][^"']+["']
